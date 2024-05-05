@@ -1,22 +1,23 @@
 import dbCuentas from "../base de datos/cuentas.json"
-class UsuarioModel {
-    usuario;
-    contraseña;
-    partners = {
-        partner_padre,
-        partner_abuelo
-    };
-    afiliados;
+import ItemDB from "./ItemDB.js";
+class UsuarioModel  extends ItemDB{
+    id; nombre; partner; username; password; mail; tipo;	
     saldo = 0;
     transacciones = []
-    constructor(registro){
-
-        this.usuario = registro.usuario;
-        this.contraseña = registro.contraseña;
-        this.partners = registro.partners;
+    constructor(campos){
+        
+        this.usuario = campos.usuario;
+        this.contraseña = campos.contraseña;
+        this.partners = campos.partners;
         this.saldo = 0;
 
     }
+    getUsuarios(){}
+    getUsuarioById(){}
+    addUsuario(product){}
+    updateUsuario(id, product) {}
+    deleteUsuario(id) {}
+
     comprar(nombre_producto, tienda){
         let tienda = dbCuentas.find(cuenta=> cuenta.tipo === "tienda")
         // elegir producto

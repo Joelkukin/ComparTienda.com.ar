@@ -1,9 +1,12 @@
 import express from "express"
-import exphbs from "express-handlebars"
+import conexion from '../models/DataBase.js'
+import testTablaDB from "../controllers/tests/testTablaDB.js";
+//import testItemDB from "../controllers/tests/testItemDB.js";
 const router = express.Router()
 
-router.get('/', (req, res) => {
-  res.status(200).send("server andando")
+router.get('/', async (req, res) => {
+  let result = await testTablaDB();
+  res.status(200).send(result)
 })
 
 export default router

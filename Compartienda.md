@@ -1,4 +1,4 @@
-# Voces Virales
+# Compartienda
 
 ## Descripción general 
 Este proyecto tiene como objetivo la creación de un marketplace que se destaca por su sistema de marketing de afiliados, lo que facilita que los negocios puedan vender sus productos sin tener que pagar por los las visitas que no se convierten en compradores reduciendo asi el coste de la publicidad

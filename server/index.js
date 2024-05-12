@@ -20,6 +20,7 @@ app.use(bodyParser.json());
 // Rutas de la aplicación
 //app.use(auth);
 app.use(index);
+app.use(shortlinkRedirect);
 app.use(usuariosController);
 
 //Ejecutamos el servidor

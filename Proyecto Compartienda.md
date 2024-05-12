@@ -1,11 +1,12 @@
 # Compartienda
 
-## Descripción general 
+## Descripción general
+
 Este proyecto tiene como objetivo la creación de un marketplace que se destaca por su sistema de marketing de afiliados, lo que facilita que los negocios puedan vender sus productos sin tener que pagar por los las visitas que no se convierten en compradores reduciendo asi el coste de la publicidad
 
 este sistema de marketing de afiliados se enfoca en incentivar la recomendación boca a boca basado en que la recomendación de un amigo o conocido tiene más credibilidad que la recomendación de un anuncio publicitario
 
-## Progreso
+# 
 
 ```js
 permisos: {
@@ -13,15 +14,16 @@ permisos: {
   minus: automatizado
 }
 ```
+
 ### ¿que partes componen a este marketplace?
 
-  sistema de login y registro
+1. sistema de login y registro
 
-  sistema de productos
+2. sistema de afiliados
 
-  sistema de afiliados
+3. sistema de productos
 
-  sistema de carrito de compras
+4. sistema de carrito de compras
 
 ### ¿que diferencias tienen con un crud normal?
 
@@ -36,54 +38,59 @@ carrito de compras: al enviar se sigue un formulario para el pago
 ### parece que todos son instancias de CRUD
 
 1- sistema de login y registro
+
 ```
     a) CRUD "registro de usuarios"
         PERMISOS: "C"
-    
+
     b) CRUD "login"
         PERMISOS: "R"
 ```
+
 2- sistema de productos
+
 ```
     a) CRUD "buscador/listado de productos" 
         PERMISOS: "Ru" 
         MOD_BY: "carrito de compras"
         FILTRO: "$categoria", "$precio"
-    
+
     b) CRUD "cargador de productos" (solo cuentas "tienda") 
         PERMISOS: "CRUD"
-    
+
     c) CRUD "carrito de compras" 
         PERMISOS: "cRUD"
         MODIFY: "buscador/listado de productos", "registro de ventas"
         AFTER: "pagina de gracias", "sistema de seguimiento de paqueteria" (averiguar api de correo argentino y demás logisticas)
 ```
+
 3- sistema de afiliados
+
 ```
     a) CRUD "registro de ventas" (vendedor, usuario, lista:[productos]) // solo cuentas "tienda"
         PERMISOS: "cR" 
         MOD_BY: "carrito de compras"
         FILTRO: "$afiliado", "$precio"
-        
+
 ```
 
 ### Caracteristicas de un CRUD
+
 1. interactua con una tabla de la BD (Create, Read, Update, Delete)
 
 2. puede ser accedido por diferentes vistas
 
 Vistas CRUD:
-
     a- como tabla 
     b- como galeria
 
 Formas de modificar los datos en cada item:
-
     a- con un formulario popup
     b- en el mismo registro
     c- con un boton especifico para cada acción que muestre un popup con un formulario
 
 viendolo como clases seria: 
+
 ```js
   class ItemCRUD{
     //create
@@ -107,3 +114,4 @@ viendolo como clases seria:
   }
 ```
 
+# 

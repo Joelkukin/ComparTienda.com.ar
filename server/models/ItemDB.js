@@ -1,29 +1,11 @@
-export default class ItemDB {
-  constructor(props){
+import TablaDB from './TablaDB.js'
+export default class ItemDB extends TablaDB{
+  constructor(id,props){
+    Object.assign(this, id);
     Object.assign(this, props);
-
-    async ()=>{
-      const campos = Object.keys(props);
-      const valores = Object.values(props);
-      try {
-        const sql = `INSERT INTO ${this.nombre}(${campos.join(", ")}) VALUES (?)`;
-        const item = new ItemDB(props)
-        const resultado = await this._conexion.query(sql,valores);
-
-        sql = `SELECT * FROM ${this.nombre} WHERE id = ?`;
-        const id = await this._conexion.query(sql,id);
-        this.id = id.result;
-        console.log("id ejecutado desde el contructor: ",id.status);
-
-
-        console.log("creación de objeto ",resultado.status);
-        
-      } 
-      catch (error) {
-        console.log("error al crear el item: ",error.message)
-        return error.message
-      }
-    }
+    // comando set
+    // comando get id
+    this._conexion.query()
   }
 
   async update(id, datos) {
@@ -38,7 +20,7 @@ export default class ItemDB {
         values.push(datos[clave]);
       }
       sets = sets.join(', ');
-      values.push(id);  // Agrega el id al final del array de valores
+      values.push(this.id);  // Agrega el id al final del array de valores
 
       const sql = `UPDATE ${this.nombre} SET ${sets} WHERE \`id\` = ?`;
       

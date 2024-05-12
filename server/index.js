@@ -5,6 +5,9 @@ import express from 'express'
 
 // Import Routes
 import index from"./routes/index.js"
+import usuariosController from "./routes/usuarios.js"
+import shortlinkRedirect from "./routes/shortlink.redirect.js"
+
 //import auth from "./routes/auth.js";
 
 // Inicio del server
@@ -17,6 +20,7 @@ app.use(bodyParser.json());
 // Rutas de la aplicación
 //app.use(auth);
 app.use(index);
+app.use(usuariosController);
 
 //Ejecutamos el servidor
 const PORT = process.env.PORT ?? 3000;

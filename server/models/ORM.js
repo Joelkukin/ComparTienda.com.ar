@@ -162,7 +162,6 @@ export default class TablaDB {
       if(typeof buscar !== 'string' || typeof en !== 'string') return new Error("faltan parámetros o alguno de ellos no es un string"+JSON.stringify([buscar,en]))
       
       const sql = 'SELECT '+traer+' FROM '+this.nombre+' WHERE '+en+' LIKE ?';
-      console.log("sql = ",sql)
       const resultado = await this._conexion.query(sql,buscar);
 
       
@@ -239,7 +238,7 @@ export default class TablaDB {
       
       const resultado = await this._conexion.query(sql, ...values);
 
-      console.log("id: ",id)
+      // console.log("id: ",id)
       let itemModificado = await this.getById(id) ;
       
       // console.log("resultado del metodo UPDATE: ",resultado.result.affectedRows? "OK":"ERROR");
@@ -261,9 +260,9 @@ export default class TablaDB {
       resultado = this._conexion.query(sql,id);
 
       [itemABorrar, resultado ] = await Promise.all([itemABorrar,resultado])
-      console.log("resultado.result.affectedRow: ",resultado.result[0])
+      // console.log("resultado.result.affectedRow: ",resultado.result[0])
       if(resultado.status == "succesful"){
-        console.log("Elementos borrados: ",itemABorrar);
+        // console.log("Elementos borrados: ",itemABorrar);
         return "Elementos borrados: ",itemABorrar
 
       }else if(resultado.status == "failed"){

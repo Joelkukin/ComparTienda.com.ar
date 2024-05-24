@@ -1,6 +1,4 @@
 import express from "express"
-import conexion from '../models/DataBase.js'
-import test from "../tests/testTablaDB.js";
 
 const router = express.Router()
 

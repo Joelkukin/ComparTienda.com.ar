@@ -1,4 +1,4 @@
-import TablaDB from  '../models/TablaDB.js';
+import TablaDB from  '../models/ORM.js';
 import conexion from "../models/DataBase.js";
 
 // TESTEAMOS QUE LAS FUNCIONES CRUD FUNCIONEN CORRECTAMENTE//

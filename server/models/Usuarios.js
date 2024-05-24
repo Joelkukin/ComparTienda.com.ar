@@ -1,4 +1,4 @@
-import TablaDB from "./TablaDB.js";
+import TablaDB from "./ORM.js";
 const usuarios = new TablaDB({
     nombre:"usuarios",
     id:"id",

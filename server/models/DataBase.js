@@ -1,4 +1,4 @@
-import mysql2 from 'mysql2/promise';
+import mysql2, { escape } from 'mysql2/promise';
 import {DB_HOST,
 DB_USER,
 DB_PASSWORD,
@@ -19,6 +19,8 @@ try{
   
   db= {
     conection,
+    escape: (string) => typeof string == "string" ? db.conection.escape(string) : false,
+
     query: async (sql, ...params) => {
   
       try {
@@ -37,7 +39,7 @@ try{
   console.log(`Conexión a la base de datos ${JSON.stringify(dbName.result[0]["DATABASE()"])} exitosa`);
 }catch(e){
   switch (e.code) {
-    case "ECONNREFUSED":
+    case 'ECONNREFUSED':
       console.log( e.code,"error al conectar con la base de datos");
       break;
   

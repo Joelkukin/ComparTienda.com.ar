@@ -1,4 +1,4 @@
-import TablaDB from "./TablaDB.js";
+import TablaDB from "./ORM.js";
 const shortlinks = new TablaDB({
     nombre:"shortlinks",
     id:"id_shortlink",

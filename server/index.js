@@ -4,9 +4,10 @@ import cors from 'cors'
 import express from 'express'
 
 // Import Routes
-import index from"./routes/index.js"
-import usuariosController from "./routes/usuarios.js"
-import shortlinkRedirect from "./routes/shortlink.redirect.js"
+import auth from"./routes/auth.routes.js"
+import indexRoutes from"./routes/index.routes.js"
+import usuariosRoutes from "./routes/usuarios.routes.js"
+import shortlinkRedirect from "./routes/shortlink.routes.js"
 
 //import auth from "./routes/auth.js";
 
@@ -18,10 +19,10 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 // Rutas de la aplicación
-//app.use(auth);
-app.use(index);
+app.use(auth);
+app.use(indexRoutes);
+app.use(usuariosRoutes);
 app.use(shortlinkRedirect);
-app.use(usuariosController);
 
 //Ejecutamos el servidor
 const PORT = process.env.PORT ?? 3000;

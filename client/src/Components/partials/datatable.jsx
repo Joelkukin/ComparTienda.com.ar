@@ -1,14 +1,12 @@
 import { useState } from 'react'
-
-
-function myFormulario() {
-
+function Datatable
+(datos) {
+  
   return (
     <>
-      
      
     </>
   )
 }
 
-export default myFormulario
+export default Datatable

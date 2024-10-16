@@ -28,9 +28,14 @@ try{
         //console.log(results); // results contains rows returned by server
         //console.log(fields); // fields contains extra meta data about results, if available
         return {status:"succesful", result: results[0]}
-      } catch (err) {
-        console.error(err);
-        return {query: sql, params,status:"error",code: err.errno,error: err.message};
+      } catch (e) {
+        if (e.code === 'ECONNREFUSED'){
+          console.log( e.code,"error al conectar con la base de datos");
+          return "error al conectar con la base de datos";
+        }else{
+          console.log(e)
+          db = {conection:undefined,query:undefined}
+        }
       }
     }
   }
@@ -38,17 +43,8 @@ try{
   let dbName = await db.query("SELECT DATABASE();")
   console.log(`Conexión a la base de datos ${JSON.stringify(dbName.result[0]["DATABASE()"])} exitosa`);
 }catch(e){
-  switch (e.code) {
-    case 'ECONNREFUSED':
-      console.log( e.code,"error al conectar con la base de datos");
-      break;
   
-    default:
-      console.log(e)
-      db = {conection:undefined,query:undefined}
-      break;
-  }
-  
+  console.log(e)
 }
 
 

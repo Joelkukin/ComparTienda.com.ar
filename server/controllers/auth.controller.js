@@ -37,13 +37,34 @@ export async function login (req, res, next) {
 
 export async function register (req, res, next){
   // recibo los datos del formulario de registro {nombre, mail, partner, username, password, tipo}
-  let {nombre, mail, partner, username, password, tipo} = req.body
+  // let params = req.body
+  
+  // Validacion de parámetros
+  let validparams = []
+
+  let params = {
+    "nombre":"joel",
+    "mail":"joelkukin@gmail.com",
+    "partner":"nadie",
+    "username":"jkukin",
+    "password":"1234",
+    "tipo":"CEO"
+}
+  let {nombre, mail, partner, username, password, tipo} = params
+
+  // validamos que todos los datos sean strings. la validación de formato ocurre en el frontend
+  let validacion = true
+  for (const key in params) {
+    if(typeof params[key] !== 'string'){validacion = false; break}
+  }
   
   // verifico si el usuario ya existe
 
   // si existe respondo que ya existe
   // si no existe lo registro en la base de datos (usuarios.add) y lo reenvio al login
 
-  res.status(200).json({status, message})
+  // res.status(200).json(req.body)
 }
 export default {login, register}
+
+register()

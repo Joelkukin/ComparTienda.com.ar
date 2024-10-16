@@ -120,7 +120,13 @@ export default class TablaDB {
     }
   }
 
-  async search({en, buscar, traer = null}) {
+  async search({buscar, en = this.idCol, traer = "*"}) {
+    if(typeof buscar ==="object"){
+      let [en] = Object.keys(buscar)
+      buscar = String(buscar[en])
+    }
+
+    console.log({en, buscar, traer})
     try{
       // verificar que "en" sea igual a uno de los campos
       if (!this.campos.includes(en)) {
@@ -132,12 +138,12 @@ export default class TablaDB {
         
         // Si el valor de "traer" es un string
         if (typeof traer == "string") {
-          
+          console.log('traer !== "*"',traer !== "*")
           // Si el valor de "traer" no existe en el array "this.campos"
-          if (!this.campos.includes(traer)) {
+          if (traer !== "*" && !this.campos.includes(traer)) {
             // Lanzar un error con un mensaje personalizado
             throw new Error(`El campo traer:"${traer}" no existe en la tabla "${this.nombre}"`);
-          } else {
+          } else if(traer !== "*"){
             // En caso contrario, Encontrar el primer elemento del array "this.campos" que coincida con el valor de "traer"
             const campoCoincidente = this.campos.find(campo => campo === traer);
             // Asignar el valor de "campoCoincidente" a la variable "traer"

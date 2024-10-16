@@ -1,4 +1,6 @@
 export function procesarUrl(url) {
+  if(!url) throw new Error( "url is undefined");
+
   // Verificar si la URL ya tiene "http://" o "https://"
   if (url.startsWith('http://') || url.startsWith('https://')) {
       return url;

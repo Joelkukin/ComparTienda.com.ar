@@ -35,7 +35,7 @@ sistema de afiliados: cualquiera puede escribir (registrarse) pero solo los afil
 
 carrito de compras: al enviar se sigue un formulario para el pago
 
-### parece que todos son instancias de CRUD
+### parece que todos son instancias de CRUD (Cada punto es un controller)
 
 1- sistema de login y registro
 
